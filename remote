@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check if a commit message was provided
+if [ -z "$1" ]; then
+  echo "❌ Commit message is required."
+  echo "Usage: ./remote \"your commit message\""
+  exit 1
+fi
+
+# Combine all arguments as the commit message
+commit_message="$*"
+
+# Git automation
+echo "📂 Adding changes..."
+git add .
+
+echo "📝 Committing with message: \"$commit_message\""
+git commit -m "$commit_message"
+
+echo "📤 Pushing to remote..."
+git push
+
+echo "✅ Done."
